@@ -1,0 +1,9 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="overloaded constructors:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/overloaded_constructors_jar</output-path>
+    <root id="archive" name="overloaded constructors.jar">
+      <element id="module-output" name="overloaded constructors" />
+      <element id="library" level="project" name="mysql-connector-java-8.0.28" />
+    </root>
+  </artifact>
+</component>

@@ -1,17 +1,33 @@
-
+import java.sql.*;
 
 public class Main {
     public static void main(String[] args) {
 
-        Car myCar1 = new Car();
-        Car myCar2 = new Car();
+        try {
 
-        System.out.println(myCar1.make);
-        System.out.println(myCar1.model);
-        System.out.println();
-        System.out.println(myCar2.make);
-        System.out.println(myCar2.model);
+            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/user", "root", "Kietden313");
 
-        myCar1.drive();
+            String sql = "SELECT * FROM User";
+
+            Statement statement = connection.createStatement();
+            ResultSet result = statement.executeQuery(sql);
+
+            int count = 0;
+
+            while (result.next()){
+                String user = result.getString(2);
+                String pass = result.getString(3);
+                String fullname = result.getString("fullname");
+                String email = result.getString("email");
+
+                String output = "User #%d: %s - %s - %s - %s";
+                System.out.println(String.format(output, ++count, user, pass, fullname, email));
+            }
+
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
+
     }
 }

@@ -1,14 +1,21 @@
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+
 public class Main {
     public static void main(String[] args) {
+        String url = "jdbc:mysql://localhost:3306/mydb";
+        String username = "root";
+        String password= "Kietden313";
 
-        Pizza pizza = new Pizza("a", "b","c");
+        try {
+            Connection conn = DriverManager.getConnection(url, username, password);
+            if (conn != null) {
+                System.out.println("Connected");
+            }
 
-        System.out.println("Here are the ingredients of your pizza: ");
-        System.out.println(pizza.bread);
-        System.out.println(pizza.sauce);
-        System.out.println(pizza.cheese);
-        System.out.println(pizza.topping);
-
-
-    }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+            }
+        }
 }
